@@ -1,17 +1,23 @@
 #Finding Root x
 
-import timeit 
+import timeit
 
-def square_root_bSearch(x, epsilon):
-    if x < 0:
-        return None
-    low = min(-1.0, x)
-    high = max(1.0, x)
+x = 1.5
+epsilon = 0.001
+numGuesses = 0
+low = 0.0
+high = max(1.0, x)
+ans = (high + low)/2.0
+
+while abs(ans**2 - x) >= epsilon:
+    print('low =', low, 'high =', high, 'ans =', ans)
+    numGuesses += 1
+    if ans**2 < x:
+        low = ans 
+    else:
+        high = ans
     ans = (high + low)/2.0
-    while abs(ans**2 - x) >= epsilon:
-        if ans**2 < x:
-            low = ans
-        else:
-            high = ans
-        ans = (high + low)/2.0
-    return ans
+print('numGuesses =', numGuesses)
+print(ans, 'is close to square root of', x)
+
+print(f'Total configuration execution time: {(timeit.default_timer() - start):.4f}s.', flush=True)
