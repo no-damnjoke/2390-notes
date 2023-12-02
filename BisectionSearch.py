@@ -2,22 +2,24 @@
 
 import timeit
 
-x = 1.5
-epsilon = 0.001
-numGuesses = 0
-low = 0.0
-high = max(1.0, x)
-ans = (high + low)/2.0
-
-while abs(ans**2 - x) >= epsilon:
-    print('low =', low, 'high =', high, 'ans =', ans)
-    numGuesses += 1
-    if ans**2 < x:
-        low = ans 
-    else:
-        high = ans
+def square_root_bisection(x, epsilon, max_steps=1000):
+    
+    numGuesses = 0
+    low = 0.0
+    high = max(1.0, x)
     ans = (high + low)/2.0
-print('numGuesses =', numGuesses)
-print(ans, 'is close to square root of', x)
 
-print(f'Total configuration execution time: {(timeit.default_timer() - start):.4f}s.', flush=True)
+    while abs(ans**2 - x) >= epsilon:
+        numGuesses += 1
+        if numGuesses > max_steps:
+            return(None)
+        if ans**2 < x:
+            low = ans 
+        else:
+            high = ans
+        ans = (high + low)/2.0
+    return ans
+
+print(square_root_bisection(2056, 0.001))
+
+
