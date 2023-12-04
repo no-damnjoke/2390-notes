@@ -2,7 +2,7 @@ import timeit
 
 #Ranked by efficiency in descencing order
 
-def normalSquareRoot(x, epsilon, max_steps = 1e8): #Don't set max_steps ot set max_step extremely high
+def normalSquareRoot(x, epsilon, max_steps = 1e8): #Don't set max_steps or set max_step extremely high
     step = epsilon**2 
     numGuesses = 0
     ans = 0.0

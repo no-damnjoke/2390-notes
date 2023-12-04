@@ -3,7 +3,6 @@
 import timeit
 
 def square_root_bisection(x, epsilon, max_steps=1000):
-    
     numGuesses = 0
     low = 0.0
     high = max(1.0, x)
